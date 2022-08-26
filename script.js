@@ -30,6 +30,10 @@ class Img {
   currentImage = null;
 
   addImg(url, title) {
+    if (typeof url !== 'string' || typeof title !== 'string') {
+      throw new Error('arguments must be type of string');
+    }
+
     const img = {
       url,
       title,
@@ -59,10 +63,14 @@ class Img {
 }
 
 const img1 = new Img('img1');
-img1.addImg(
-  'https://static.boredpanda.com/blog/wp-content/uploads/2017/11/My-most-popular-pic-since-I-started-dog-photography-5a0b38cbd5e1e__880.jpg',
-  'a dog'
-);
+try {
+  img1.addImg(
+    'https://static.boredpanda.com/blog/wp-content/uploads/2017/11/My-most-popular-pic-since-I-started-dog-photography-5a0b38cbd5e1e__880.jpg',
+    'a dog'
+  );
+} catch (error) {
+  console.log(error.message);
+}
 img1.addImg(
   'https://www.heloplus.com/wp-content/uploads/2022/02/whatsapp-dp-pic.jpg',
   'a lion'
