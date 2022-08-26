@@ -27,6 +27,7 @@ class Img {
   }
 
   images = [];
+  currentImage = null;
 
   addImg(url, title) {
     const img = {
@@ -41,25 +42,23 @@ class Img {
   changeToImageIndex(index) {
     this.imageElement.src = this.images[index].url;
     this.imageElement.alt = this.images[index].title;
-    return index;
+    this.currentImage = index;
   }
   next(index) {
     index === this.images.length - 1 ? (index = 0) : index++;
     this.imageElement.src = this.images[index].url;
     this.imageElement.alt = this.images[index].title;
+    this.currentImage = index;
   }
   prev(index) {
     index === 0 ? (index = this.images.length - 1) : index--;
-
     this.imageElement.src = this.images[index].url;
     this.imageElement.alt = this.images[index].title;
+    this.currentImage = index;
   }
 }
 
 const img1 = new Img('img1');
-const img2 = new Img('img2');
-// console.log(img1);
-
 img1.addImg(
   'https://static.boredpanda.com/blog/wp-content/uploads/2017/11/My-most-popular-pic-since-I-started-dog-photography-5a0b38cbd5e1e__880.jpg',
   'a dog'
@@ -78,10 +77,11 @@ img1.addImg(
 );
 
 img1.changeToImageIndex(0);
-img1.next(2);
+img1.next(1);
 img1.prev(0);
 // console.log(img1);
-// console.log(img2);
+
+const img2 = new Img('img2');
 img2.addImg(
   'https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000',
   'space'
@@ -98,3 +98,5 @@ img2.addImg(
 img2.changeToImageIndex(1);
 img2.next(1);
 img2.prev(0);
+
+// console.log(img2);
