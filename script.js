@@ -22,7 +22,9 @@
 //  }
 
 class Img {
-  imageElement = document.getElementById('img1');
+  constructor(id) {
+    this.imageElement = document.getElementById(id);
+  }
 
   images = [];
 
@@ -39,6 +41,7 @@ class Img {
   changeToImageIndex(index) {
     this.imageElement.src = this.images[index].url;
     this.imageElement.alt = this.images[index].title;
+    return index;
   }
   next(index) {
     index === this.images.length - 1 ? (index = 0) : index++;
@@ -53,7 +56,9 @@ class Img {
   }
 }
 
-const img1 = new Img();
+const img1 = new Img('img1');
+const img2 = new Img('img2');
+// console.log(img1);
 
 img1.addImg(
   'https://static.boredpanda.com/blog/wp-content/uploads/2017/11/My-most-popular-pic-since-I-started-dog-photography-5a0b38cbd5e1e__880.jpg',
@@ -72,7 +77,24 @@ img1.addImg(
   'heart'
 );
 
-img1.changeToImageIndex(2);
+img1.changeToImageIndex(0);
 img1.next(2);
-img1.prev(2);
-console.log(img1);
+img1.prev(0);
+// console.log(img1);
+// console.log(img2);
+img2.addImg(
+  'https://img.freepik.com/premium-photo/astronaut-outer-open-space-planet-earth-stars-provide-background-erforming-space-planet-earth-sunrise-sunset-our-home-iss-elements-this-image-furnished-by-nasa_150455-16829.jpg?w=2000',
+  'space'
+);
+img2.addImg('https://pbs.twimg.com/media/EWQzScBXQAEn0xu.jpg', 'elephant');
+img2.addImg(
+  'https://media.istockphoto.com/photos/hands-forming-a-heart-shape-with-sunset-silhouette-picture-id636379014?k=20&m=636379014&s=612x612&w=0&h=Zb6EobVr_BR278tpANKvKzfcQMIz-P_2Tv3XVXZufAM=',
+  'hands'
+);
+img2.addImg(
+  'https://interactive-examples.mdn.mozilla.net/media/cc0-images/grapefruit-slice-332-332.jpg',
+  'orange'
+);
+img2.changeToImageIndex(1);
+img2.next(1);
+img2.prev(0);
