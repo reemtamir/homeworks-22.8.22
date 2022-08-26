@@ -39,7 +39,6 @@ class Img {
   changeToImageIndex(index) {
     this.imageElement.src = this.images[index].url;
     this.imageElement.alt = this.images[index].title;
-    return index;
   }
   next(index) {
     index === this.images.length - 1 ? (index = 0) : index++;
@@ -75,4 +74,5 @@ img1.addImg(
 
 img1.changeToImageIndex(2);
 img1.next(2);
-img1.prev(0);
+img1.prev(2);
+console.log(img1);
